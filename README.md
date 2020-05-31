@@ -1,4 +1,4 @@
-# Azure function event receiver for Sharepoint (written for NodeJS)
+# Azure function event receiver for Sharepoint
 
 This is a fork of original event receiver writen by Sergei Sergeev. I modernized it a bit and added an example for changing properties during synchonous events.
 
