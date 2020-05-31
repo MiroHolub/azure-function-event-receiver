@@ -1,0 +1,9 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "",
+    "ClientId": "your client id here",
+    "ClientSecret": "your secret here",
+    "languageWorkers:node:arguments": "--inspect=5858"    
+  }
+}
