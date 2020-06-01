@@ -22,3 +22,4 @@ project.lock.json
 .secrets
 appsettings.json
 node_modules
+local.settings copy.json

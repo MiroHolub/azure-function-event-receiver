@@ -23,6 +23,8 @@ function run(context, req) {
     });
 }
 exports.run = run;
+// Parses soap request comming from sharepoint and checks whether 
+// ProcessOneWayEvent (async) or ProcessEvent (sync) should be run.
 function execute(context, req) {
     return __awaiter(this, void 0, void 0, function* () {
         let soap_string = req.headers['x-sp-errormessage'];
@@ -42,8 +44,9 @@ function execute(context, req) {
 //sync ItemAdding
 function processEvent(eventProperties, context) {
     return __awaiter(this, void 0, void 0, function* () {
-        // for demo: cancel sync -ing RER with error:
-        let body = fs.readFileSync('AzFuncRer/rsponse.xml').toString();
+        // works for -ing events, changeTitle.xml contains envelope which changes Item Title to "Changed on the go!"
+        // this can be also chnged to stopWithError which will prevent saving of the item with error
+        let body = fs.readFileSync('changeTitle.xml').toString();
         context.res = {
             status: 200,
             headers: {
@@ -73,7 +76,7 @@ function processOneWayEvent(eventProperties, context) {
         });
         let itemUpdate = yield sp_commonjs_1.sp.web.lists.getById(itemProperties.ListId).items.getById(itemProperties.ListItemId)
             .update({
-            Title: "VSYS-" + itemProperties.ListItemId
+            Title: "ID of this item is -" + itemProperties.ListItemId
         });
         console.log(itemUpdate);
         context.res = {

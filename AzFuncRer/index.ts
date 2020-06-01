@@ -37,7 +37,7 @@ async function processEvent(eventProperties: any, context: any): Promise<any> {
     
     // works for -ing events, changeTitle.xml contains envelope which changes Item Title to "Changed on the go!"
     // this can be also chnged to stopWithError which will prevent saving of the item with error
-    let body = fs.readFileSync('AzFuncRer/changeTitle.xml').toString();
+    let body = fs.readFileSync('changeTitle.xml').toString();
     context.res = {
         status: 200,
         headers: {
@@ -47,7 +47,7 @@ async function processEvent(eventProperties: any, context: any): Promise<any> {
         isRaw: true
     } as any;
 
-    context.done();
+    context.done(); 
 }
 
 //async ItemAdded
